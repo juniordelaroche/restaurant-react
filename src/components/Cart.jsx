@@ -53,8 +53,8 @@ export default function Cart({
                     alt={product.name}
                   />
                 </div>
-                <div className="w-full">
-                  <span className="ff-raleway text-sm font-semibold text-slate-900">
+                <div className="w-full flex flex-col gap-1">
+                  <span className="ff-raleway text-sm font-semibold text-slate-900 mb-0">
                     {product.title}
                   </span>
 
@@ -65,7 +65,7 @@ export default function Cart({
                         onClick={() => removeProduct(product.id)}
                         type="button"
                         title="Remove"
-                        className="rounded-full cursor-pointer flex justify-center leading-none items-center pb-1 border text-xs border-amber-500 text-amber-500 px-3 transition transition-400 hover:bg-amber-500 hover:text-white"
+                        className="rounded-full cursor-pointer flex justify-center leading-none items-center border text-xs border-amber-500 text-amber-500 px-3 pt-1 pb-1.5 transition transition-400 hover:bg-amber-500 hover:text-white"
                       >
                         Remover
                       </button>

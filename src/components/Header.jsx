@@ -4,7 +4,7 @@ export default function Header({ showCart, totalPayment, totalQuantity }) {
   return (
     <header className="shadow py-5 bg-white sticky top-0 z-5">
       <div className="max-w-[1200px] px-3 h-full mx-auto flex justify-between items-center">
-        <h1 className="text-3xl font-bold ff-raleway text-slate-800">
+        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold ff-raleway text-slate-800">
           My Restaurant
         </h1>
         <button

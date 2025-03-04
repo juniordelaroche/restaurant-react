@@ -1,15 +1,16 @@
 import { useMemo } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import type { Burger, BurgerID, BurgerInCart } from '../interfaces'
 
 export default function useCart() {
-  const [cart, setCart] = useState(
-    localStorage.getItem('cartRestaurant')
-      ? JSON.parse(localStorage.getItem('cartRestaurant'))
-      : []
-  )
+  const initialCart = (): BurgerInCart[] => {
+    const localStorageCart = localStorage.getItem('cartRestaurant')
+    return localStorageCart ? JSON.parse(localStorageCart) : []
+  }
+  const [cart, setCart] = useState(initialCart)
 
-  const addProduct = (product) => {
+  const addProduct = (product: Burger) => {
     // Validar si el producto ya está en el carrito
     const productInCart = cart.find((item) => item.id === product.id)
     if (productInCart) {
@@ -22,14 +23,14 @@ export default function useCart() {
     setCart([...cart, productWithQuantity])
   }
 
-  const increaseQuantity = (productId) => {
+  const increaseQuantity = (productId: BurgerID) => {
     const newCart = cart.map((item) =>
       item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
     )
     setCart(newCart)
   }
 
-  const decreaseQuantity = (productId) => {
+  const decreaseQuantity = (productId: BurgerID) => {
     const newCart = cart.map((item) =>
       item.id === productId && item.quantity > 1
         ? { ...item, quantity: item.quantity - 1 }
@@ -38,7 +39,7 @@ export default function useCart() {
     setCart(newCart)
   }
 
-  const removeProduct = (productId) => {
+  const removeProduct = (productId: BurgerID) => {
     const newCart = cart.filter((item) => item.id !== productId)
     setCart(newCart)
   }

@@ -1,5 +1,17 @@
 import clsx from 'clsx'
 import CloseIcon from './icons/CloseIcon'
+import { BurgerID, BurgerInCart } from '../interfaces'
+
+interface CartProps {
+  showCart: () => void
+  isShowCart: boolean
+  cart: BurgerInCart[]
+  increaseQuantity: (productId: BurgerID) => void
+  decreaseQuantity: (productId: BurgerID) => void
+  removeProduct: (productId: BurgerID) => void
+  totalPayment: number
+  isEmpty: boolean
+}
 
 export default function Cart({
   showCart,
@@ -10,7 +22,7 @@ export default function Cart({
   removeProduct,
   totalPayment,
   isEmpty,
-}) {
+}: CartProps) {
   return (
     <div
       dir="ltr"
@@ -50,7 +62,7 @@ export default function Cart({
                   <img
                     className="w-full h-full object-cover "
                     src={product.image}
-                    alt={product.name}
+                    alt={product.title}
                   />
                 </div>
                 <div className="w-full flex flex-col gap-1">

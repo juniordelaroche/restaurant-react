@@ -1,6 +1,12 @@
+import { Burger } from '../interfaces'
 import CartIcon from './icons/CartIcon'
 
-export default function Product({ product, addProduct }) {
+interface ProductProps {
+  product: Burger
+  addProduct: (product: Burger) => void
+}
+
+export default function Product({ product, addProduct }: ProductProps) {
   return (
     <div className="bg-white rounded-xl card-product border border-slate-200 flex flex-col overflow-hidden transition duration-400 hover:shadow-lg hover:border-white">
       <div className="img-card h-50">

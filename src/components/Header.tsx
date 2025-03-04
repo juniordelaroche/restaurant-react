@@ -1,6 +1,16 @@
 import CartIcon from './icons/CartIcon'
 
-export default function Header({ showCart, totalPayment, totalQuantity }) {
+interface HeaderProps {
+  showCart: () => void
+  totalPayment: number
+  totalQuantity: number
+}
+
+export default function Header({
+  showCart,
+  totalPayment,
+  totalQuantity,
+}: HeaderProps) {
   return (
     <header className="shadow py-5 bg-white sticky top-0 z-5">
       <div className="max-w-[1200px] px-3 h-full mx-auto flex justify-between items-center">
